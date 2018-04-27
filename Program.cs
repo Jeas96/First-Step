@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,7 +25,10 @@ namespace GeneticAlgorithm
             //}
 
             WantBabies();
-
+            foreach(var item in youngOnes)
+            {
+              Console.WriteLine(item);
+            }
             Console.ReadKey();
         }
 
@@ -86,7 +89,7 @@ namespace GeneticAlgorithm
         {
             string[] _world = world.OrderBy(x => r.Next()).ToArray();
             int _genCounter = 0;
-            for (int i = 0; i < world.Length; i++)
+            for (int i = 0; i < world.Length-1; i++)
             {
                 int rnd = r.Next(0,WORDLENGTH);
                 youngOnes[_genCounter] = DoBaby(_world[i], _world[i + 1],rnd,true);
@@ -124,10 +127,18 @@ namespace GeneticAlgorithm
                 }
             }
             int rnd = r.Next(0,WORDLENGTH);
-
-            slice[rnd] = universe[r.Next(0, WORLDLENGHT)];
-
-            return slice;
+            
+            string nueva="";
+            for(int inx = 0; inx<WORDLENGTH;inx++){
+              if(rnd == inx)
+              {
+                nueva+= universe[r.Next(0,WORDLENGTH)];
+              }
+              else{
+                nueva+=slice[inx];
+              }
+            }
+            return nueva;
         }
     }
 }
