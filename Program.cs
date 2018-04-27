@@ -101,7 +101,7 @@ namespace GeneticAlgorithm
 
         static string DoBaby(string x, string y, int pos,bool first)
         {
-            string slice = "AA";
+            string slice = "";
             if (first)
             {   
                 for (int i = 0; i < pos; i++)
